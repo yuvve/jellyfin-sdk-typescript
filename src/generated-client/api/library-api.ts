@@ -33,11 +33,15 @@ import type { ItemCounts } from '../models';
 // @ts-ignore
 import type { ItemFields } from '../models';
 // @ts-ignore
+import type { ItemSortBy } from '../models';
+// @ts-ignore
 import type { LibraryOptionsResultDto } from '../models';
 // @ts-ignore
 import type { MediaUpdateInfoDto } from '../models';
 // @ts-ignore
 import type { ProblemDetails } from '../models';
+// @ts-ignore
+import type { SortOrder } from '../models';
 // @ts-ignore
 import type { ThemeMediaResult } from '../models';
 /**
@@ -785,10 +789,12 @@ export const LibraryApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} itemId The item id.
          * @param {string} [userId] Optional. Filter by user id, and attach user data.
          * @param {boolean} [inheritFromParent] Optional. Determines whether or not parent items should be searched for theme media.
+         * @param {Array<ItemSortBy>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+         * @param {Array<SortOrder>} [sortOrder] Optional. Sort Order - Ascending, Descending.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getThemeMedia: async (itemId: string, userId?: string, inheritFromParent?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getThemeMedia: async (itemId: string, userId?: string, inheritFromParent?: boolean, sortBy?: Array<ItemSortBy>, sortOrder?: Array<SortOrder>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getThemeMedia', 'itemId', itemId)
             const localVarPath = `/Items/{itemId}/ThemeMedia`
@@ -815,6 +821,14 @@ export const LibraryApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['inheritFromParent'] = inheritFromParent;
             }
 
+            if (sortBy) {
+                localVarQueryParameter['sortBy'] = sortBy;
+            }
+
+            if (sortOrder) {
+                localVarQueryParameter['sortOrder'] = sortOrder;
+            }
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -832,10 +846,12 @@ export const LibraryApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} itemId The item id.
          * @param {string} [userId] Optional. Filter by user id, and attach user data.
          * @param {boolean} [inheritFromParent] Optional. Determines whether or not parent items should be searched for theme media.
+         * @param {Array<ItemSortBy>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+         * @param {Array<SortOrder>} [sortOrder] Optional. Sort Order - Ascending, Descending.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getThemeSongs: async (itemId: string, userId?: string, inheritFromParent?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getThemeSongs: async (itemId: string, userId?: string, inheritFromParent?: boolean, sortBy?: Array<ItemSortBy>, sortOrder?: Array<SortOrder>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getThemeSongs', 'itemId', itemId)
             const localVarPath = `/Items/{itemId}/ThemeSongs`
@@ -862,6 +878,14 @@ export const LibraryApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['inheritFromParent'] = inheritFromParent;
             }
 
+            if (sortBy) {
+                localVarQueryParameter['sortBy'] = sortBy;
+            }
+
+            if (sortOrder) {
+                localVarQueryParameter['sortOrder'] = sortOrder;
+            }
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -879,10 +903,12 @@ export const LibraryApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} itemId The item id.
          * @param {string} [userId] Optional. Filter by user id, and attach user data.
          * @param {boolean} [inheritFromParent] Optional. Determines whether or not parent items should be searched for theme media.
+         * @param {Array<ItemSortBy>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+         * @param {Array<SortOrder>} [sortOrder] Optional. Sort Order - Ascending, Descending.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getThemeVideos: async (itemId: string, userId?: string, inheritFromParent?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getThemeVideos: async (itemId: string, userId?: string, inheritFromParent?: boolean, sortBy?: Array<ItemSortBy>, sortOrder?: Array<SortOrder>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getThemeVideos', 'itemId', itemId)
             const localVarPath = `/Items/{itemId}/ThemeVideos`
@@ -907,6 +933,14 @@ export const LibraryApiAxiosParamCreator = function (configuration?: Configurati
 
             if (inheritFromParent !== undefined) {
                 localVarQueryParameter['inheritFromParent'] = inheritFromParent;
+            }
+
+            if (sortBy) {
+                localVarQueryParameter['sortBy'] = sortBy;
+            }
+
+            if (sortOrder) {
+                localVarQueryParameter['sortOrder'] = sortOrder;
             }
 
 
@@ -1406,11 +1440,13 @@ export const LibraryApiFp = function(configuration?: Configuration) {
          * @param {string} itemId The item id.
          * @param {string} [userId] Optional. Filter by user id, and attach user data.
          * @param {boolean} [inheritFromParent] Optional. Determines whether or not parent items should be searched for theme media.
+         * @param {Array<ItemSortBy>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+         * @param {Array<SortOrder>} [sortOrder] Optional. Sort Order - Ascending, Descending.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getThemeMedia(itemId: string, userId?: string, inheritFromParent?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AllThemeMediaResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getThemeMedia(itemId, userId, inheritFromParent, options);
+        async getThemeMedia(itemId: string, userId?: string, inheritFromParent?: boolean, sortBy?: Array<ItemSortBy>, sortOrder?: Array<SortOrder>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AllThemeMediaResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getThemeMedia(itemId, userId, inheritFromParent, sortBy, sortOrder, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LibraryApi.getThemeMedia']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1421,11 +1457,13 @@ export const LibraryApiFp = function(configuration?: Configuration) {
          * @param {string} itemId The item id.
          * @param {string} [userId] Optional. Filter by user id, and attach user data.
          * @param {boolean} [inheritFromParent] Optional. Determines whether or not parent items should be searched for theme media.
+         * @param {Array<ItemSortBy>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+         * @param {Array<SortOrder>} [sortOrder] Optional. Sort Order - Ascending, Descending.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getThemeSongs(itemId: string, userId?: string, inheritFromParent?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThemeMediaResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getThemeSongs(itemId, userId, inheritFromParent, options);
+        async getThemeSongs(itemId: string, userId?: string, inheritFromParent?: boolean, sortBy?: Array<ItemSortBy>, sortOrder?: Array<SortOrder>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThemeMediaResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getThemeSongs(itemId, userId, inheritFromParent, sortBy, sortOrder, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LibraryApi.getThemeSongs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1436,11 +1474,13 @@ export const LibraryApiFp = function(configuration?: Configuration) {
          * @param {string} itemId The item id.
          * @param {string} [userId] Optional. Filter by user id, and attach user data.
          * @param {boolean} [inheritFromParent] Optional. Determines whether or not parent items should be searched for theme media.
+         * @param {Array<ItemSortBy>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+         * @param {Array<SortOrder>} [sortOrder] Optional. Sort Order - Ascending, Descending.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getThemeVideos(itemId: string, userId?: string, inheritFromParent?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThemeMediaResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getThemeVideos(itemId, userId, inheritFromParent, options);
+        async getThemeVideos(itemId: string, userId?: string, inheritFromParent?: boolean, sortBy?: Array<ItemSortBy>, sortOrder?: Array<SortOrder>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThemeMediaResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getThemeVideos(itemId, userId, inheritFromParent, sortBy, sortOrder, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LibraryApi.getThemeVideos']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1702,7 +1742,7 @@ export const LibraryApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getThemeMedia(requestParameters: LibraryApiGetThemeMediaRequest, options?: RawAxiosRequestConfig): AxiosPromise<AllThemeMediaResult> {
-            return localVarFp.getThemeMedia(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, options).then((request) => request(axios, basePath));
+            return localVarFp.getThemeMedia(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, requestParameters.sortBy, requestParameters.sortOrder, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1712,7 +1752,7 @@ export const LibraryApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getThemeSongs(requestParameters: LibraryApiGetThemeSongsRequest, options?: RawAxiosRequestConfig): AxiosPromise<ThemeMediaResult> {
-            return localVarFp.getThemeSongs(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, options).then((request) => request(axios, basePath));
+            return localVarFp.getThemeSongs(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, requestParameters.sortBy, requestParameters.sortOrder, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1722,7 +1762,7 @@ export const LibraryApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getThemeVideos(requestParameters: LibraryApiGetThemeVideosRequest, options?: RawAxiosRequestConfig): AxiosPromise<ThemeMediaResult> {
-            return localVarFp.getThemeVideos(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, options).then((request) => request(axios, basePath));
+            return localVarFp.getThemeVideos(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, requestParameters.sortBy, requestParameters.sortOrder, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2218,6 +2258,20 @@ export interface LibraryApiGetThemeMediaRequest {
      * @memberof LibraryApiGetThemeMedia
      */
     readonly inheritFromParent?: boolean
+
+    /**
+     * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+     * @type {Array<ItemSortBy>}
+     * @memberof LibraryApiGetThemeMedia
+     */
+    readonly sortBy?: Array<ItemSortBy>
+
+    /**
+     * Optional. Sort Order - Ascending, Descending.
+     * @type {Array<SortOrder>}
+     * @memberof LibraryApiGetThemeMedia
+     */
+    readonly sortOrder?: Array<SortOrder>
 }
 
 /**
@@ -2246,6 +2300,20 @@ export interface LibraryApiGetThemeSongsRequest {
      * @memberof LibraryApiGetThemeSongs
      */
     readonly inheritFromParent?: boolean
+
+    /**
+     * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+     * @type {Array<ItemSortBy>}
+     * @memberof LibraryApiGetThemeSongs
+     */
+    readonly sortBy?: Array<ItemSortBy>
+
+    /**
+     * Optional. Sort Order - Ascending, Descending.
+     * @type {Array<SortOrder>}
+     * @memberof LibraryApiGetThemeSongs
+     */
+    readonly sortOrder?: Array<SortOrder>
 }
 
 /**
@@ -2274,6 +2342,20 @@ export interface LibraryApiGetThemeVideosRequest {
      * @memberof LibraryApiGetThemeVideos
      */
     readonly inheritFromParent?: boolean
+
+    /**
+     * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+     * @type {Array<ItemSortBy>}
+     * @memberof LibraryApiGetThemeVideos
+     */
+    readonly sortBy?: Array<ItemSortBy>
+
+    /**
+     * Optional. Sort Order - Ascending, Descending.
+     * @type {Array<SortOrder>}
+     * @memberof LibraryApiGetThemeVideos
+     */
+    readonly sortOrder?: Array<SortOrder>
 }
 
 /**
@@ -2568,7 +2650,7 @@ export class LibraryApi extends BaseAPI {
      * @memberof LibraryApi
      */
     public getThemeMedia(requestParameters: LibraryApiGetThemeMediaRequest, options?: RawAxiosRequestConfig) {
-        return LibraryApiFp(this.configuration).getThemeMedia(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, options).then((request) => request(this.axios, this.basePath));
+        return LibraryApiFp(this.configuration).getThemeMedia(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, requestParameters.sortBy, requestParameters.sortOrder, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2580,7 +2662,7 @@ export class LibraryApi extends BaseAPI {
      * @memberof LibraryApi
      */
     public getThemeSongs(requestParameters: LibraryApiGetThemeSongsRequest, options?: RawAxiosRequestConfig) {
-        return LibraryApiFp(this.configuration).getThemeSongs(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, options).then((request) => request(this.axios, this.basePath));
+        return LibraryApiFp(this.configuration).getThemeSongs(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, requestParameters.sortBy, requestParameters.sortOrder, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2592,7 +2674,7 @@ export class LibraryApi extends BaseAPI {
      * @memberof LibraryApi
      */
     public getThemeVideos(requestParameters: LibraryApiGetThemeVideosRequest, options?: RawAxiosRequestConfig) {
-        return LibraryApiFp(this.configuration).getThemeVideos(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, options).then((request) => request(this.axios, this.basePath));
+        return LibraryApiFp(this.configuration).getThemeVideos(requestParameters.itemId, requestParameters.userId, requestParameters.inheritFromParent, requestParameters.sortBy, requestParameters.sortOrder, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
